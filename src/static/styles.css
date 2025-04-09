@@ -1,3 +1,19 @@
+:root {
+  --bg-color: #f5f5f5;
+  --text-color: #333;
+  --card-bg: #fff;
+  --header-bg: #1a237e;
+  --border-color: #ddd;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #e6e6e6;
+  --card-bg: #2d2d2d;
+  --header-bg: #000033;
+  --border-color: #404040;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,20 +24,41 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  color: #333;
+  color: var(--text-color);
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f5f5f5;
+  background-color: var(--bg-color);
 }
 
 header {
   text-align: center;
   padding: 20px 0;
   margin-bottom: 30px;
-  background-color: #1a237e;
+  background-color: var(--header-bg);
   color: white;
   border-radius: 5px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 header h1 {
@@ -42,7 +79,7 @@ main {
 }
 
 section {
-  background-color: white;
+  background-color: var(--card-bg);
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -60,9 +97,9 @@ section h3 {
 .activity-card {
   margin-bottom: 15px;
   padding: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: var(--bg-color);
 }
 
 .activity-card h4 {

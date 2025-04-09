@@ -3,6 +3,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const activitySelect = document.getElementById("activity");
   const signupForm = document.getElementById("signup-form");
   const messageDiv = document.getElementById("message");
+  const themeToggle = document.getElementById("theme-toggle");
+
+  function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", newTheme);
+    themeToggle.textContent = newTheme === "dark" ? "☀️" : "🌙";
+    localStorage.setItem("theme", newTheme);
+  }
+
+  const savedTheme = localStorage.getItem("theme") || "light";
+  document.documentElement.setAttribute("data-theme", savedTheme);
+  themeToggle.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+  themeToggle.addEventListener("click", toggleTheme);
 
   // Function to fetch activities from API
   async function fetchActivities() {
@@ -10,8 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const response = await fetch("/activities");
       const activities = await response.json();
 
-      // Clear loading message
+      // Clear loading message and existing options
       activitiesList.innerHTML = "";
+      activitySelect.innerHTML = "<option value=''>-- Select an activity --</option>"; // Keep default option
 
       // Populate activities list
       Object.entries(activities).forEach(([name, details]) => {
