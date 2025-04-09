@@ -77,13 +77,18 @@ section h3 {
 .activity-card ul {
   margin-top: 10px;
   padding-left: 20px;
-  list-style-type: disc;
+  list-style-type: none;
   color: #555;
 }
 
 .activity-card ul li {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   font-size: 14px;
+  padding: 5px 10px;
+  background-color: #e3f2fd;
+  border-radius: 15px;
+  display: inline-block;
+  margin-right: 5px;
 }
 
 .form-group {
